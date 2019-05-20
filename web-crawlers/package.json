@@ -1,0 +1,29 @@
+{
+  "name": "lead-gen-yellowpages",
+  "version": "1.0.0",
+  "description": "messaging service for lead generation via yellowpages scraper",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "heroku local web"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.2",
+    "cors": "^2.8.3",
+    "express": "^4.15.3",
+    "iced-coffee-script": "^108.0.11",
+    "jQuery": "^1.7.4",
+    "jquery": "^3.2.1",
+    "jsdom": "^11.1.0",
+    "node-horseman": "^3.3.0",
+    "request": "^2.81.0",
+    "socket.io": "^2.0.3",
+    "socket.io-client": "^2.0.3",
+    "zombie": "^5.0.7"
+  },
+  "devDependencies": {
+    "socket.io-client": "^2.0.3"
+  }
+}

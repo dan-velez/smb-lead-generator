@@ -1,0 +1,36 @@
+# Template for a crawler.
+# These crawlers require a starting point which contains a page with links to different leads.
+
+bfsJS = require './crawlib/bfs-js.iced'
+parseEmails = require './crawlib/parse-emails.iced'
+{ EventEmitter } = require 'events'
+
+crawl = ({term, location})->
+	emitter = new EventEmitter
+	control = running:true
+
+	bfsJS
+		root: ''
+		path: ''
+		control: control
+
+		delay: 1000
+
+		parse: ({ html, url })->
+			emitter.emit 'log', log:"visiting #{url}"
+			emails = parseEmails html
+			if emails then console.log '\n', '@@@@\n', emails, '\n'
+			
+		filter: (l)->
+			pass = true
+			pass
+
+	emitter.stop = -> control.running = false
+	emitter
+
+module.exports = crawl
+
+#-- test program ----------------------------------------------#
+crawler = crawl {term:'trucking', location:'miami'}
+crawler.on 'log', (l)-> console.log log:l
+crawler.on 'lead', (l)-> console.log lead:l
